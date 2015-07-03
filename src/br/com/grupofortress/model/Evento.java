@@ -23,6 +23,7 @@ public class Evento implements Serializable {
     private String eve_codigo_evento;
     private String eve_particao;
     private String eve_usuario_zona;
+    private String status;
 
 //    00:03  07/01  01 5087 18 E602 01 000*
 //    00:03 hora central de alarme
@@ -111,6 +112,14 @@ public class Evento implements Serializable {
 
     public void setEve_usuario_zona(String eve_usuario_zona) {
         this.eve_usuario_zona = eve_usuario_zona;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }

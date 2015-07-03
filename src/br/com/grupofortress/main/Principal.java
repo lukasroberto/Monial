@@ -18,15 +18,10 @@ public class Principal {
         java.util.Timer timer = new java.util.Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
-                conta = conta + 1;
-                if (conta >= qtqTimer) {
-                    conta = 0;
-                    Universal.reiniciaAplicativo();
-                } else {
-                    n.verificaEventosBD();
-                }
+                n.verificaEventosBD();
             }
         }, 5000, intervaloTime);
 
     }
+
 }

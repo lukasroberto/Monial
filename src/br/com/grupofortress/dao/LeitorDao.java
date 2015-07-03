@@ -1,5 +1,6 @@
 package br.com.grupofortress.dao;
 
+import br.com.grupofortress.controller.Universal;
 import br.com.grupofortress.model.Cliente;
 import java.util.List;
 
@@ -8,6 +9,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import br.com.grupofortress.model.Evento;
+import javax.persistence.Query;
+import propriedades.Propriedades;
 
 public class LeitorDao {
 
@@ -79,14 +82,11 @@ public class LeitorDao {
             ex.printStackTrace();
         }
     }
-
-    public void clientesSemComunicação(String clicodigo) {
-        
-         try {
-        entityManager.createQuery("UPDATE TOP (200) CLIENTE SET cli_ultima_comunicacao = '2011-08-24 14:20:05.190' WHERE (cli_codigo = '2')");
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            entityManager.getTransaction().rollback();
-        }
+    
+    
+    public List<Evento> getEventosRecebidos() {
+        entityManager.getTransaction().begin();
+        Query createQuery = entityManager.createQuery("FROM br.com.grupofortress.model.Evento WHERE (eve_status = '1')");
+              return createQuery.getResultList();
     }
 }
